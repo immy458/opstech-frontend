@@ -1,0 +1,6 @@
+interface User {
+  username: string
+  email: string
+  role: string
+  _id: string
+}
