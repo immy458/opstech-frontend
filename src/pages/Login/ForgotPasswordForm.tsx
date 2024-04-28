@@ -45,16 +45,16 @@ const ForgotPasswordForm: React.FC<IPROPS> = ({ setShowForgotPasswordUI }: IPROP
   return (
     <>
       {contextHolder}
-      <form className='space-y-4 md:space-y-6' onSubmit={(e) => void handleForgotPassword(e)}>
+      <form className='space-y-4 md:space-y-6' onSubmit={(e) => handleForgotPassword(e)}>
         <fieldset className='space-y-4 md:space-y-6' disabled={disableForm}>
           <div>
-            <label htmlFor='username' className='block mb-2 text-sm font-medium text-gray-900'>
+            <label htmlFor='email' className='block mb-2 text-sm font-medium text-gray-900'>
               Your email
             </label>
             <input
               type='email'
-              name='username'
-              id='username'
+              name='email'
+              id='email'
               className=' border border-gray-300 text-gray-900 sm:text-sm rounded-lg w-full p-2.5'
               placeholder='Enter your email'
               required={true}

@@ -3,4 +3,7 @@ export const initialUserState: User = {
   email: '',
   role: '',
   _id: '',
+  firstName: '',
+  lastName: '',
+  password: '',
 }

@@ -27,6 +27,10 @@ const useProvideAuth = (): AuthContext => {
   const signIn = async (username: string, password: string) => {
     const response = await AuthService.login(username, password)
     const userDetails = response.data as User
+    console.log('userDetails')
+    console.log(userDetails)
+    console.log('response.data')
+    console.log(response.data)
     setUser(userDetails)
     setIsAuthenticated(true)
     sessionStorage.setItem('user', JSON.stringify(userDetails))

@@ -38,4 +38,11 @@ export const AuthService = {
     )
     return response.data
   },
+  signup: async (userData: User) => {
+    const response = await axios.post<APIResult>(
+      `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.signup}`,
+      userData
+    )
+    return response.data
+  },
 }

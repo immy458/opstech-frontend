@@ -23,8 +23,6 @@ const Header: React.FC = () => {
 
   const navItems: NavItem[] = [
     { text: 'Home', link: '/' },
-    { text: 'About', link: 'about' },
-    { text: 'Contact', link: '/contacy' },
     { text: 'Profile', link: '/profile' },
     { text: 'Logout', link: '/logout' },
   ]
@@ -84,7 +82,7 @@ const Header: React.FC = () => {
             Sign in
           </Link>
           <Link
-            to={appRoutes.loginPage}
+            to={appRoutes.signupPage}
             className='px-4 py-2  hover:bg-primaryMedium rounded-xl m-2 cursor-pointer duration-300 hover:text-primaryDark border-2 border-primaryMedium'
           >
             Sign up

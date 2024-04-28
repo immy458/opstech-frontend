@@ -77,7 +77,7 @@ const ResetPassword = () => {
             <h1 className='text-xl font-bold leading-tight tracking-tight text-primaryMedium md:text-2xl'>
               Reset Password
             </h1>
-            <form className='space-y-4 md:space-y-6' onSubmit={(e) => void handleResetPassword(e)}>
+            <form className='space-y-4 md:space-y-6' onSubmit={(e) => handleResetPassword(e)}>
               <fieldset className='space-y-4 md:space-y-6' disabled={disableForm}>
                 <div>
                   <label

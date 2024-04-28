@@ -43,7 +43,7 @@ const LoginForm = ({ setShowForgotPasswordUI }: IPROS) => {
   return (
     <>
       {contextHolder}
-      <form className='space-y-4 md:space-y-6' onSubmit={(e) => void handleSignIn(e)}>
+      <form className='space-y-4 md:space-y-6' onSubmit={(e) => handleSignIn(e)}>
         <div>
           <label htmlFor='username' className='block mb-2 text-sm font-medium text-gray-900'>
             Your username
