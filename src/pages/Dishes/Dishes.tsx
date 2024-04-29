@@ -5,24 +5,25 @@ import { Select, Skeleton, Tag, notification } from 'antd'
 import { DISH_CATEGORIES, DISH_CUISINE, DISH_TYPES } from '../../constants'
 import { AiFillFilter } from 'react-icons/ai'
 import { CartService } from '../../services/cartService'
+import { useDispatch, useSelector } from 'react-redux'
+import { setSelectedDishFilter } from '../../store/actions/dishActions'
 
 const Dishes = () => {
   const [api, contextHolder] = notification.useNotification()
+  const dispatch = useDispatch()
 
   const [dishes, setDishes] = useState<Dish[]>([])
-  const [dishFilter, setDishFilter] = useState<DishFilter>({
-    type: '',
-    cuisine: '',
-    category: '',
-  })
+  const dishFilter = useSelector((state: RootState) => state.dishFilters)
   const [loading, setLoading] = useState<boolean>(false)
 
   const resetFilter = () => {
-    setDishFilter({
-      type: '',
-      cuisine: '',
-      category: '',
-    })
+    dispatch(
+      setSelectedDishFilter({
+        type: '',
+        cuisine: '',
+        category: '',
+      })
+    )
   }
 
   const getDishes = async () => {
@@ -93,7 +94,9 @@ const Dishes = () => {
                 options={DISH_TYPES.map((dish) => ({ value: dish, label: dish }))}
                 disabled={loading}
                 value={dishFilter.type === '' ? undefined : dishFilter.type}
-                onChange={(value) => setDishFilter((prev) => ({ ...prev, type: value }))}
+                onChange={(value) =>
+                  dispatch(setSelectedDishFilter({ ...dishFilter, type: value }))
+                }
               />
             </div>
             <div className='flex items-center gap-x-4'>
@@ -104,7 +107,9 @@ const Dishes = () => {
                 options={DISH_CUISINE.map((cuisine) => ({ value: cuisine, label: cuisine }))}
                 disabled={loading}
                 value={dishFilter.cuisine === '' ? undefined : dishFilter.cuisine}
-                onChange={(value) => setDishFilter((prev) => ({ ...prev, cuisine: value }))}
+                onChange={(value) =>
+                  dispatch(setSelectedDishFilter({ ...dishFilter, cuisine: value }))
+                }
               />
             </div>
             <div className='flex items-center gap-x-4'>
@@ -115,7 +120,9 @@ const Dishes = () => {
                 options={DISH_CATEGORIES.map((category) => ({ value: category, label: category }))}
                 disabled={loading}
                 value={dishFilter.category === '' ? undefined : dishFilter.category}
-                onChange={(value) => setDishFilter((prev) => ({ ...prev, category: value }))}
+                onChange={(value) =>
+                  dispatch(setSelectedDishFilter({ ...dishFilter, category: value }))
+                }
               />
             </div>
           </div>

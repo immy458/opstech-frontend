@@ -1,4 +1,8 @@
-type DishFilter = Record<string, string>
+interface DishFilter {
+  type: string
+  cuisine: string
+  category: string
+}
 
 interface Dish {
   _id?: string

@@ -9,3 +9,9 @@ export const initialUserState: User = {
 }
 
 export const initalCartItemsState: CartItem[] = []
+
+export const initialDishFilterState: DishFilter = {
+  type: '',
+  cuisine: '',
+  category: '',
+}

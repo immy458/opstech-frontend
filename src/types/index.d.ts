@@ -4,3 +4,12 @@ interface APIResult {
   data: any
   error: string
 }
+
+interface ReduxAction<T> {
+  type: string
+  payload?: T
+}
+
+interface RootState {
+  dishFilters: DishFilter
+}
