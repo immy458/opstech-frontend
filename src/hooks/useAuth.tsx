@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from 'react'
 import { initialUserState } from '../constants/initialStates'
 import { AuthService } from '../services/authService'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface AuthContext {
   user: User
@@ -23,14 +24,12 @@ export const ProvideAuth: React.FC<ProvideAuthProps> = ({ children }) => {
 const useProvideAuth = (): AuthContext => {
   const [user, setUser] = useState<User>(initialUserState)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   const signIn = async (username: string, password: string) => {
     const response = await AuthService.login(username, password)
     const userDetails = response.data as User
-    console.log('userDetails')
-    console.log(userDetails)
-    console.log('response.data')
-    console.log(response.data)
     setUser(userDetails)
     setIsAuthenticated(true)
     sessionStorage.setItem('user', JSON.stringify(userDetails))
@@ -48,6 +47,7 @@ const useProvideAuth = (): AuthContext => {
     if (storedUser) {
       setUser(JSON.parse(storedUser) as User)
       setIsAuthenticated(true)
+      navigate(`${location.pathname}${location.search}`)
     }
   }, [])
 

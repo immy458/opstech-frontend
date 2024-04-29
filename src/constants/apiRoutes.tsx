@@ -4,4 +4,5 @@ export const apiRoutes = {
   resetPassword: '/reset-password',
   logout: '/logout',
   signup: '/signup',
+  changePassword: '/change-password',
 }

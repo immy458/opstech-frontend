@@ -8,6 +8,7 @@ import PasswordReset from './pages/PasswordReset/PasswordReset'
 import { useContext } from 'react'
 import { authContext } from './hooks/useAuth'
 import Signup from './pages/Signup/Signup'
+import Profile from './pages/Profile/Profile'
 
 interface IRoute {
   redirectPath: string
@@ -41,6 +42,14 @@ function App() {
           element={!auth.isAuthenticated ? <Signup /> : <Navigate to='/' />}
         />
         <Route path={appRoutes.passwordResetPage} element={<PasswordReset />} />
+        <Route
+          path={appRoutes.profilePage}
+          element={
+            <PrivateRoute redirectPath='/login'>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<Home />} />
       </Routes>
     </>

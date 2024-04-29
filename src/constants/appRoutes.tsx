@@ -3,4 +3,5 @@ export const appRoutes = {
   signupPage: '/signup',
   passwordResetPage: '/password-reset',
   homePage: '/',
+  profilePage: '/profile',
 }

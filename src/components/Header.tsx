@@ -24,8 +24,8 @@ const Header: React.FC = () => {
   const navItems: NavItem[] = [
     { text: 'Home', link: '/' },
     { text: 'Profile', link: '/profile' },
-    { text: 'Logout', link: '/logout' },
   ]
+  auth.isAuthenticated && navItems.push({ text: 'Logout', link: '/logout' })
 
   const logout = async () => {
     try {

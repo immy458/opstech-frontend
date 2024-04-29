@@ -8,7 +8,8 @@ export const AuthService = {
       {
         username,
         password,
-      }
+      },
+      { withCredentials: true }
     )
     return response.data
   },
@@ -34,7 +35,8 @@ export const AuthService = {
   },
   logout: async () => {
     const response = await axios.get<AxiosResponse>(
-      `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.logout}`
+      `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.logout}`,
+      { withCredentials: true }
     )
     return response.data
   },
@@ -42,6 +44,16 @@ export const AuthService = {
     const response = await axios.post<APIResult>(
       `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.signup}`,
       userData
+    )
+    return response.data
+  },
+  changePassword: async (currentPassword: string, newPassword: string) => {
+    const response = await axios.patch<APIResult>(
+      `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.changePassword}`,
+      { currentPassword, newPassword },
+      {
+        withCredentials: true,
+      }
     )
     return response.data
   },
