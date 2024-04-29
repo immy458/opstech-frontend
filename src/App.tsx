@@ -3,7 +3,7 @@ import './App.css'
 import Header from './components/Header'
 import Login from './pages/Login/Login'
 import { appRoutes } from './constants/appRoutes'
-import Home from './pages/Home/Home'
+import Dishes from './pages/Dishes/Dishes'
 import PasswordReset from './pages/PasswordReset/PasswordReset'
 import { useContext } from 'react'
 import { authContext } from './hooks/useAuth'
@@ -29,7 +29,7 @@ function App() {
           path={appRoutes.homePage}
           element={
             <PrivateRoute redirectPath='/login'>
-              <Home />
+              <Dishes />
             </PrivateRoute>
           }
         />
@@ -50,7 +50,14 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path='*' element={<Home />} />
+        <Route
+          path='*'
+          element={
+            <PrivateRoute redirectPath='/login'>
+              <Dishes />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   )

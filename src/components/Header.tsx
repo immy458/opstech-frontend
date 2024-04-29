@@ -61,12 +61,14 @@ const Header: React.FC = () => {
       {/* Desktop Navigation Items */}
       <ul className='hidden md:flex'>
         {navItems.map((navItem, index) => (
-          <li
-            key={index}
-            className='p-4 hover:bg-primaryMedium rounded-xl m-2 cursor-pointer duration-300 hover:text-primaryDark'
-          >
+          <li key={index}>
             {navItem.link !== '/logout' ? (
-              <Link to={navItem.link}>{navItem.text}</Link>
+              <Link
+                to={navItem.link}
+                className='p-4 hover:bg-primaryMedium rounded-xl m-2 cursor-pointer duration-300 hover:text-primaryDark'
+              >
+                {navItem.text}
+              </Link>
             ) : (
               <button onClick={logout}>{navItem.text}</button>
             )}
@@ -108,20 +110,22 @@ const Header: React.FC = () => {
       >
         <div className='flex flex-col items-center'>
           <h1 className='w-full text-3xl font-bold text-primaryMedium m-4'>OPSTECH.</h1>
-          <p className='w-full py-2'>Hi {auth.user.username}!!</p>
+          {auth.isAuthenticated && <p className='w-full py-2'>Hi {auth.user.username}!!</p>}
         </div>
 
         {/* Mobile Navigation Items */}
 
         {navItems.map((navItem, index) => (
-          <li
-            key={index}
-            className='p-4 border-b rounded-xl hover:bg-primaryMedium duration-300 hover:text-primaryDark cursor-pointer border-gray-600'
-          >
+          <li key={index}>
             {navItem.link !== '/logout' ? (
-              <Link to={navItem.link}>{navItem.text}</Link>
+              <Link
+                className='p-4 border-b rounded-xl hover:bg-primaryMedium duration-300 hover:text-primaryDark cursor-pointer border-gray-600'
+                to={navItem.link}
+              >
+                {navItem.text}
+              </Link>
             ) : (
-              <button onClick={void logout}>{navItem.text}</button>
+              <button onClick={logout}>{navItem.text}</button>
             )}
           </li>
         ))}

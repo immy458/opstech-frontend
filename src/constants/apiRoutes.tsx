@@ -5,4 +5,5 @@ export const apiRoutes = {
   logout: '/logout',
   signup: '/signup',
   changePassword: '/change-password',
+  dishes: '/dishes',
 }
