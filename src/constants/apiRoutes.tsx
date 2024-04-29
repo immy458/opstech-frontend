@@ -6,4 +6,5 @@ export const apiRoutes = {
   signup: '/signup',
   changePassword: '/change-password',
   dishes: '/dishes',
+  cart: '/cart',
 }

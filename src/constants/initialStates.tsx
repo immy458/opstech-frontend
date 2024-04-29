@@ -7,3 +7,5 @@ export const initialUserState: User = {
   lastName: '',
   password: '',
 }
+
+export const initalCartItemsState: CartItem[] = []

@@ -4,6 +4,7 @@ import { AxiosError } from 'axios'
 import { Select, Skeleton, Tag, notification } from 'antd'
 import { DISH_CATEGORIES, DISH_CUISINE, DISH_TYPES } from '../../constants'
 import { AiFillFilter } from 'react-icons/ai'
+import { CartService } from '../../services/cartService'
 
 const Dishes = () => {
   const [api, contextHolder] = notification.useNotification()
@@ -47,6 +48,25 @@ const Dishes = () => {
       void getDishes()
     }, 2000)
   }, [dishFilter])
+
+  const addToCart = async (dishId: string, dishName: string) => {
+    try {
+      await CartService.addCartItem(dishId)
+      api.success({
+        message: 'Added to cart',
+        description: `${dishName} successfully added to cart`,
+        duration: 3,
+      })
+    } catch (error) {
+      console.error('Error fetching dishes:', error)
+      const axiosError = error as AxiosError
+      api.error({
+        message: 'Forgot Password',
+        description: (axiosError.response?.data as APIResult).error || axiosError.message,
+        duration: 60,
+      })
+    }
+  }
 
   return (
     <>
@@ -152,7 +172,10 @@ const Dishes = () => {
                     </p>
                     <div className='flex items-center justify-between'>
                       <span className='text-3xl font-bold text-gray-900 '>₹{dish.price}</span>
-                      <button className='text-primaryDark bg-primaryMedium hover:text-primaryLight hover:bg-primaryDark  rounded-lg text-sm px-3 py-2'>
+                      <button
+                        className='text-primaryDark bg-primaryMedium hover:text-primaryLight hover:bg-primaryDark  rounded-lg text-sm px-3 py-2'
+                        onClick={() => addToCart(dish._id ?? '', dish.name)}
+                      >
                         <span>Add to Cart</span>
                       </button>
                     </div>

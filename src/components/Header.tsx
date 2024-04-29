@@ -21,11 +21,13 @@ const Header: React.FC = () => {
     setNavOpenView(!navOpenView)
   }
 
-  const navItems: NavItem[] = [
-    { text: 'Home', link: '/' },
-    { text: 'Profile', link: '/profile' },
-  ]
-  auth.isAuthenticated && navItems.push({ text: 'Logout', link: '/logout' })
+  const navItems: NavItem[] = [{ text: 'Home', link: '/' }]
+  auth.isAuthenticated &&
+    navItems.push(
+      { text: 'Profile', link: '/profile' },
+      { text: 'Cart', link: '/cart' },
+      { text: 'Logout', link: '/logout' }
+    )
 
   const logout = async () => {
     try {

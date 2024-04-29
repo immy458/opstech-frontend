@@ -4,4 +4,5 @@ export const appRoutes = {
   passwordResetPage: '/password-reset',
   homePage: '/',
   profilePage: '/profile',
+  cartPage: '/cart',
 }

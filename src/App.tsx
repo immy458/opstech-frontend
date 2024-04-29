@@ -9,6 +9,7 @@ import { useContext } from 'react'
 import { authContext } from './hooks/useAuth'
 import Signup from './pages/Signup/Signup'
 import Profile from './pages/Profile/Profile'
+import Cart from './pages/Cart/Cart'
 
 interface IRoute {
   redirectPath: string
@@ -47,6 +48,14 @@ function App() {
           element={
             <PrivateRoute redirectPath='/login'>
               <Profile />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path={appRoutes.cartPage}
+          element={
+            <PrivateRoute redirectPath='/login'>
+              <Cart />
             </PrivateRoute>
           }
         />
