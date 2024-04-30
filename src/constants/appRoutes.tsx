@@ -5,4 +5,6 @@ export const appRoutes = {
   homePage: '/',
   profilePage: '/profile',
   cartPage: '/cart',
+  addDishPage: '/add-dish',
+  errorPage: '/error',
 }

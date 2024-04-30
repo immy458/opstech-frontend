@@ -18,6 +18,7 @@ interface Dish {
     | 'Thai'
     | 'Mediterranean'
     | 'Other'
-  category: 'Main Course' | 'Dessert' | 'Drinks' | 'Other'
-  type: 'Veg' | 'Non-veg'
+    | undefined
+  category: 'Main Course' | 'Dessert' | 'Drinks' | 'Other' | undefined
+  type: 'Veg' | 'Non-veg' | undefined
 }

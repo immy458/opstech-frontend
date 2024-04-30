@@ -10,6 +10,9 @@ import { authContext } from './hooks/useAuth'
 import Signup from './pages/Signup/Signup'
 import Profile from './pages/Profile/Profile'
 import Cart from './pages/Cart/Cart'
+import { USER_TYPE } from './constants'
+import AddDish from './pages/Dishes/AddDish'
+import Error from './components/Error'
 
 interface IRoute {
   redirectPath: string
@@ -21,6 +24,13 @@ function App() {
 
   const PrivateRoute = ({ redirectPath, children }: IRoute) =>
     auth.isAuthenticated ? <>{children}</> : <Navigate to={redirectPath} />
+
+  const AdminRoute = ({ redirectPath, children }: IRoute) =>
+    auth.isAuthenticated && auth.user.role === USER_TYPE.ADMIN ? (
+      <>{children}</>
+    ) : (
+      <Navigate to={redirectPath} />
+    )
 
   return (
     <>
@@ -60,13 +70,14 @@ function App() {
           }
         />
         <Route
-          path='*'
+          path={appRoutes.addDishPage}
           element={
-            <PrivateRoute redirectPath='/login'>
-              <Dishes />
-            </PrivateRoute>
+            <AdminRoute redirectPath='/error'>
+              <AddDish />
+            </AdminRoute>
           }
         />
+        <Route path='*' element={<Error />} />
       </Routes>
     </>
   )

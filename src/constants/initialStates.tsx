@@ -15,3 +15,11 @@ export const initialDishFilterState: DishFilter = {
   cuisine: '',
   category: '',
 }
+export const initialDishState: Dish = {
+  name: '',
+  description: '',
+  price: 0,
+  cuisine: undefined,
+  category: undefined,
+  type: undefined,
+}

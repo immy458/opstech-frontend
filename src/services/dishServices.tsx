@@ -24,4 +24,12 @@ export const DishService = {
     )
     return response.data
   },
+  addDish: async (dishData: Dish) => {
+    const response = await axios.post<APIResult>(
+      `${import.meta.env.VITE_BACKEND_SERVICE_URL}${apiRoutes.dishes}`,
+      dishData,
+      { withCredentials: true }
+    )
+    return response.data
+  },
 }
