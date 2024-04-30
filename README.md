@@ -1,7 +1,5 @@
 # React + TypeScript + Vite
 
-The app allows users to view dishes, add new dish for admin and manage their cart also supports authentication like signup, forgot password and change password built with React and Redux.
-
 This app allows users to view dishes, add new dishes (for admins), manage their cart, and supports authentication for signup, password reset, and password change. The frontend is built with React, TypeScript, and Redux, with Vite as the build tool.
 
 ## Installation
